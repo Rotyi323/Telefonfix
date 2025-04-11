@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+/* Alap stílus az egész oldalhoz */
+body {
+  font-family: "Segoe UI", Roboto, sans-serif;
+  background-color: #f4f6f8;
+  margin: 0;
+  padding: 0;
+  color: #222;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}

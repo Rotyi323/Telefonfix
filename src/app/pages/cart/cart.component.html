@@ -1,0 +1,32 @@
+<div class="cart-container">
+  <h2 class="cart-title">Kosár</h2>
+
+  <ng-container *ngIf="cartItems.length > 0; else emptyCart">
+    <div *ngFor="let item of cartItems; let i = index" class="cart-item">
+      <mat-card>
+        <mat-card-title>{{ item.name }}</mat-card-title>
+        <mat-card-content>
+          <p class="description">{{ item.description }}</p>
+          <p class="price">
+            <strong>{{ item.price | priceSpace }}</strong>
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="warn" (click)="removeItem(i)">
+            Eltávolítás
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+
+    <div class="clear-button">
+      <button mat-raised-button color="warn" (click)="clearCart()">
+        Kosár ürítése
+      </button>
+    </div>
+  </ng-container>
+
+  <ng-template #emptyCart>
+    <p class="empty-cart-message">A kosár üres.</p>
+  </ng-template>
+</div>

@@ -1,0 +1,27 @@
+<mat-card class="product-card">
+  <img
+    mat-card-image
+    [src]="product.image"
+    [alt]="product.name"
+    style="height: 200px; object-fit: cover"
+  />
+
+  <mat-card-content>
+    <h3 style="font-size: 1.4em; font-weight: bold; margin: 12px 0 8px 0">
+      {{ product.name }}
+    </h3>
+    <p>{{ product.description }}</p>
+    <p>
+      <strong>{{ product.price | priceSpace }}</strong>
+    </p>
+  </mat-card-content>
+
+  <mat-card-actions style="gap: 8px">
+    <a [routerLink]="['/products', product.id]">
+      <button mat-raised-button color="primary">Részletek</button>
+    </a>
+    <button mat-raised-button color="primary" (click)="onAddToCart()">
+      Kosárba
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,15 @@
+<ng-container *ngIf="product; else notFound">
+  <mat-card>
+    <mat-card-title>{{ product.name }}</mat-card-title>
+    <mat-card-content>
+      <p>{{ product.description }}</p>
+      <p>
+        <strong>{{ product.price | number }} Ft</strong>
+      </p>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+
+<ng-template #notFound>
+  <p>Termék nem található 😢</p>
+</ng-template>

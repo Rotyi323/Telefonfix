@@ -1,0 +1,11 @@
+a {
+  color: white;
+  text-decoration: none;
+  margin-left: 8px;
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+a:hover {
+  text-decoration: underline;
+}

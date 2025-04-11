@@ -1,0 +1,11 @@
+<div class="page-container">
+  <h2 style="margin-bottom: 24px">Elérhető telefonok</h2>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 24px">
+    <app-product-card
+      *ngFor="let product of products"
+      [product]="product"
+      (addToCart)="addToCart($event)"
+    ></app-product-card>
+  </div>
+</div>
