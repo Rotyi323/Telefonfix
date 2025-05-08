@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CartService } from '../../services/cart.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf, NgFor } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { NgIf, NgFor } from '@angular/common';
 import { PriceSpacePipe } from '../../pipes/price-space.pipe';
+import { TruncatePipe } from '../../pipes/truncate.pipe';
 
 @Component({
   selector: 'app-cart',
@@ -16,6 +16,7 @@ import { PriceSpacePipe } from '../../pipes/price-space.pipe';
     NgIf,
     NgFor,
     PriceSpacePipe,
+    TruncatePipe,
   ],
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],

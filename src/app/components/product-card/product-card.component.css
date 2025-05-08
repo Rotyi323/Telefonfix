@@ -1,7 +1,12 @@
-.product-card {
+mat-card {
   width: 300px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+mat-card-content p {
+  word-break: break-word;
+  overflow-wrap: break-word;
 }

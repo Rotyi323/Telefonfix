@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-navbar',
@@ -11,4 +12,13 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent {}
+export class NavbarComponent {
+  cartService = inject(CartService);
+  cartCount = signal(0);
+
+  constructor() {
+    this.cartService.items$.subscribe((items) => {
+      this.cartCount.set(items.length);
+    });
+  }
+}

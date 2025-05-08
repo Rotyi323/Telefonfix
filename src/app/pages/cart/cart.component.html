@@ -6,7 +6,7 @@
       <mat-card>
         <mat-card-title>{{ item.name }}</mat-card-title>
         <mat-card-content>
-          <p class="description">{{ item.description }}</p>
+          <p class="description">{{ item.description | truncate : 80 }}</p>
           <p class="price">
             <strong>{{ item.price | priceSpace }}</strong>
           </p>

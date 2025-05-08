@@ -3,7 +3,9 @@
   <span class="nav-buttons">
     <a mat-button routerLink="/">Főoldal</a>
     <a mat-button routerLink="/products">Termékek</a>
-    <a mat-button routerLink="/cart">Kosár</a>
+    <a mat-button routerLink="/cart" class="cart-link">
+      Kosár <span class="cart-badge">{{ cartCount() }}</span>
+    </a>
     <a mat-button routerLink="/checkout">Megrendelés</a>
   </span>
 </mat-toolbar>
