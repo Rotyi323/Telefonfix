@@ -10,7 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { Order } from '../../models/order.model';
-
+import { CartComponent } from '../cart/cart.component';
 @Component({
   selector: 'app-checkout',
   standalone: true,
@@ -20,6 +20,7 @@ import { Order } from '../../models/order.model';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    CartComponent,
   ],
   templateUrl: './checkout.component.html',
   styleUrls: ['./checkout.component.css'],
@@ -40,11 +41,14 @@ export class CheckoutComponent {
       const orderData: Order = {
         name: this.orderForm.value.name,
         email: this.orderForm.value.email,
-        items: [], // Itt később betölthető a kosár tartalma
+        items: [], // Kosártartalom később
         message: this.orderForm.value.message,
       };
       console.log('Rendelés leadva:', orderData);
-      // Itt lehetne: this.orderService.submitOrder(orderData);
     }
+  }
+
+  onCartCleared() {
+    alert('A kosár kiürült!');
   }
 }

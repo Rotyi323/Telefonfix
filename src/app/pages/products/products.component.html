@@ -5,7 +5,9 @@
     <app-product-card
       *ngFor="let product of products"
       [product]="product"
-      (addToCart)="addToCart($event)"
+      [highlighted]="product.id === 2"
+      (addToCart)="addToCart(product)"
+      (viewDetails)="navigateTo($event)"
     ></app-product-card>
   </div>
 </div>

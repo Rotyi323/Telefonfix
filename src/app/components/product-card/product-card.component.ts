@@ -23,9 +23,8 @@ import { TruncatePipe } from '../../pipes/truncate.pipe';
 })
 export class ProductCardComponent {
   @Input() product!: Product;
-  @Output() addToCart = new EventEmitter<Product>();
+  @Input() highlighted: boolean = false;
 
-  onAddToCart() {
-    this.addToCart.emit(this.product);
-  }
+  @Output() addToCart = new EventEmitter<Product>();
+  @Output() viewDetails = new EventEmitter<number>(); // 🔧 itt volt a hiba
 }

@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Output,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CommonModule, NgIf, NgFor } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -21,13 +27,19 @@ import { TruncatePipe } from '../../pipes/truncate.pipe';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
 })
-export class CartComponent {
+export class CartComponent implements OnInit, OnDestroy {
+  @Output() cartCleared = new EventEmitter<void>();
   cartItems: any[] = [];
 
   constructor(private cartService: CartService) {}
 
   ngOnInit() {
+    console.log('[CartComponent] Betöltve!');
     this.cartItems = this.cartService.getItems();
+  }
+
+  ngOnDestroy() {
+    console.log('[CartComponent] Törölve!');
   }
 
   removeItem(index: number) {
@@ -38,5 +50,6 @@ export class CartComponent {
   clearCart() {
     this.cartService.clearCart();
     this.cartItems = [];
+    this.cartCleared.emit();
   }
 }

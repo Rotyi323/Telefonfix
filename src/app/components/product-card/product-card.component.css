@@ -1,4 +1,4 @@
-mat-card {
+.product-card {
   width: 300px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -9,4 +9,9 @@ mat-card {
 mat-card-content p {
   word-break: break-word;
   overflow-wrap: break-word;
+}
+
+.highlighted {
+  border: 2px solid #2196f3;
+  box-shadow: 0 0 16px rgba(33, 150, 243, 0.5);
 }

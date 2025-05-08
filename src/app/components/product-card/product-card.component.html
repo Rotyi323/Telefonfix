@@ -1,12 +1,4 @@
-<mat-card
-  style="
-    width: 300px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  "
->
+<mat-card [class.highlighted]="highlighted" class="product-card">
   <!-- Kép -->
   <img
     mat-card-image
@@ -16,30 +8,23 @@
   />
 
   <!-- Terméknév + tartalom -->
-  <mat-card-content
-    style="
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    "
-  >
-    <h3 style="font-size: 1.4em; font-weight: bold; margin: 12px 0 8px 0">
-      {{ product.name }}
-    </h3>
+  <mat-card-content>
+    <h3>{{ product.name }}</h3>
     <p>{{ product.description | truncate : 60 }}</p>
     <p>
-      <strong style="font-size: 1.1em">
-        {{ product.price | priceSpace }}
-      </strong>
+      <strong>{{ product.price | priceSpace }}</strong>
     </p>
   </mat-card-content>
 
   <!-- Gombok -->
   <mat-card-actions style="gap: 8px">
-    <a [routerLink]="['/products', product.id]">
-      <button mat-raised-button color="primary">Részletek</button>
-    </a>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="viewDetails.emit(product.id)"
+    >
+      Részletek
+    </button>
     <button mat-raised-button color="primary" (click)="addToCart.emit(product)">
       Kosárba
     </button>

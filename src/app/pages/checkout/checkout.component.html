@@ -1,31 +1,36 @@
-<div class="form-wrapper">
-  <h2 class="form-title">Megrendelés</h2>
+<div class="checkout-container">
+  <!-- Kosár beillesztése -->
+  <app-cart (cartCleared)="onCartCleared()"></app-cart>
 
-  <div class="form-container">
-    <form [formGroup]="orderForm" (ngSubmit)="submitOrder()">
-      <mat-form-field appearance="outline" class="full-width thick-border">
-        <mat-label>Teljes név</mat-label>
-        <input matInput formControlName="name" required />
-      </mat-form-field>
+  <div class="form-wrapper">
+    <h2 class="form-title">Megrendelés</h2>
 
-      <mat-form-field appearance="outline" class="full-width thick-border">
-        <mat-label>Email cím</mat-label>
-        <input matInput formControlName="email" required />
-      </mat-form-field>
+    <div class="form-container">
+      <form [formGroup]="orderForm" (ngSubmit)="submitOrder()">
+        <mat-form-field appearance="outline" class="full-width thick-border">
+          <mat-label>Teljes név</mat-label>
+          <input matInput formControlName="name" required />
+        </mat-form-field>
 
-      <mat-form-field appearance="outline" class="full-width thick-border">
-        <mat-label>Megjegyzés</mat-label>
-        <textarea matInput formControlName="message" rows="4"></textarea>
-      </mat-form-field>
+        <mat-form-field appearance="outline" class="full-width thick-border">
+          <mat-label>Email cím</mat-label>
+          <input matInput formControlName="email" required />
+        </mat-form-field>
 
-      <button
-        mat-raised-button
-        color="primary"
-        type="submit"
-        [disabled]="!orderForm.valid"
-      >
-        Rendelés elküldése
-      </button>
-    </form>
+        <mat-form-field appearance="outline" class="full-width thick-border">
+          <mat-label>Megjegyzés</mat-label>
+          <textarea matInput formControlName="message" rows="4"></textarea>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="!orderForm.valid"
+        >
+          Rendelés elküldése
+        </button>
+      </form>
+    </div>
   </div>
 </div>
