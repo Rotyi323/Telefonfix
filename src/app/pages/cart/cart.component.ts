@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { PriceSpacePipe } from '../../pipes/price-space.pipe';
 import { TruncatePipe } from '../../pipes/truncate.pipe';
+import { CartItem } from '../../models/cart-item.model';
 
 @Component({
   selector: 'app-cart',
@@ -29,7 +30,7 @@ import { TruncatePipe } from '../../pipes/truncate.pipe';
 })
 export class CartComponent implements OnInit, OnDestroy {
   @Output() cartCleared = new EventEmitter<void>();
-  cartItems: any[] = [];
+  cartItems: CartItem[] = [];
 
   constructor(private cartService: CartService) {}
 

@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { CartService } from '../../services/cart.service';
+import { CartItem } from '../../models/cart-item.model';
 
 @Component({
   selector: 'app-navbar',
@@ -17,8 +18,9 @@ export class NavbarComponent {
   cartCount = signal(0);
 
   constructor() {
-    this.cartService.items$.subscribe((items) => {
-      this.cartCount.set(items.length);
+    this.cartService.items$.subscribe((items: CartItem[]) => {
+      const total = items.reduce((sum, item) => sum + item.quantity, 0);
+      this.cartCount.set(total);
     });
   }
 }
