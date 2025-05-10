@@ -1,13 +1,15 @@
 <mat-toolbar color="primary">
-  <span style="margin-right: auto; font-weight: bold">📱 Telefonfix</span>
-  <span class="nav-buttons">
-    <a mat-button routerLink="/">Főoldal</a>
-    <a mat-button routerLink="/products">Termékek</a>
-    <a mat-button routerLink="/cart" class="cart-link">
-      Kosár <span class="cart-badge">{{ cartCount() }}</span>
-    </a>
-    <a mat-button routerLink="/checkout">Megrendelés</a>
-  </span>
-  <a mat-button routerLink="/tickets">Hibajegyek</a>
-  <a mat-button routerLink="/login">Teszt belépés</a>
+  <div class="navbar-top">
+    <span style="font-weight: bold; font-size: 1.4rem">📱 Telefonfix</span>
+    <span class="nav-buttons">
+      <a routerLink="/">Főoldal</a>
+      <a routerLink="/products">Termékek</a>
+      <a routerLink="/cart" class="cart-link">
+        Kosár <span class="cart-badge">{{ cartCount() }}</span>
+      </a>
+      <a routerLink="/checkout">Megrendelés</a>
+      <a routerLink="/tickets">Hibajegyek</a>
+      <a routerLink="/login">Teszt belépés</a>
+    </span>
+  </div>
 </mat-toolbar>

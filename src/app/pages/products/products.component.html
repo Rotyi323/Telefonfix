@@ -1,13 +1,47 @@
-<div class="page-container">
-  <h2 style="margin-bottom: 24px">Elérhető telefonok</h2>
+<div class="products-layout">
+  <mat-card class="filter-panel">
+    <h3>Szűrés</h3>
 
-  <div style="display: flex; flex-wrap: wrap; gap: 24px">
+    <div class="filter-group">
+      <strong>Ár szerint:</strong>
+      <div>
+        <mat-checkbox
+          [checked]="priceFilter === 'all'"
+          (change)="onPriceChange('all')"
+          >Összes</mat-checkbox
+        >
+        <mat-checkbox
+          [checked]="priceFilter === 'expensive'"
+          (change)="onPriceChange('expensive')"
+          >Drágák (&gt; 400 000 Ft)</mat-checkbox
+        >
+        <mat-checkbox
+          [checked]="priceFilter === 'cheap'"
+          (change)="onPriceChange('cheap')"
+          >Olcsók (&lt; 50 000 Ft)</mat-checkbox
+        >
+      </div>
+    </div>
+
+    <div class="filter-group">
+      <strong>Márka:</strong>
+      <div *ngFor="let brand of brands">
+        <mat-checkbox
+          [checked]="selectedBrands.includes(brand)"
+          (change)="toggleBrandSelection(brand)"
+        >
+          {{ brand }}
+        </mat-checkbox>
+      </div>
+    </div>
+  </mat-card>
+
+  <div class="product-grid">
     <app-product-card
-      *ngFor="let product of products"
+      *ngFor="let product of filteredProducts"
       [product]="product"
-      [highlighted]="product.id === 2"
       (addToCart)="addToCart(product)"
-      (viewDetails)="navigateTo($event)"
+      (viewDetails)="navigateTo(product.id)"
     ></app-product-card>
   </div>
 </div>

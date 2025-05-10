@@ -21,7 +21,7 @@
     <button
       mat-raised-button
       color="primary"
-      (click)="viewDetails.emit(product.id)"
+      (click)="product.id && viewDetails.emit(product.id)"
     >
       Részletek
     </button>

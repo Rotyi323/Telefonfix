@@ -26,5 +26,5 @@ export class ProductCardComponent {
   @Input() highlighted: boolean = false;
 
   @Output() addToCart = new EventEmitter<Product>();
-  @Output() viewDetails = new EventEmitter<number>(); // 🔧 itt volt a hiba
+  @Output() viewDetails = new EventEmitter<string>();
 }
