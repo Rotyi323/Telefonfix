@@ -1,0 +1,70 @@
+<div class="ticket-container">
+  <h2>
+    {{ editingTicketId ? "Hibajegy szerkesztése" : "Hibajegy beküldése" }}
+  </h2>
+
+  <form [formGroup]="ticketForm" (ngSubmit)="submitTicket()">
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Név</mat-label>
+      <input matInput formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" />
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Hiba leírása</mat-label>
+      <textarea matInput formControlName="message" rows="4"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+      <mat-label>Érintett készülék</mat-label>
+      <mat-select formControlName="productId">
+        <mat-option *ngFor="let product of products" [value]="product.id">
+          {{ product.name }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      [disabled]="!ticketForm.valid"
+    >
+      {{ editingTicketId ? "Mentés" : "Küldés" }}
+    </button>
+    <button
+      mat-button
+      type="button"
+      color="warn"
+      *ngIf="editingTicketId"
+      (click)="resetForm()"
+    >
+      Mégse
+    </button>
+  </form>
+
+  <div style="margin-top: 32px">
+    <h3>Beküldött hibajegyek</h3>
+    <mat-card *ngFor="let ticket of tickets" style="margin-bottom: 12px">
+      <mat-card-title>
+        {{ ticket.name }} ({{ ticket.email }}) – 📱
+        {{ getProductName(ticket.productId) }}
+      </mat-card-title>
+      <mat-card-content>
+        <p>{{ ticket.message }}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="editTicket(ticket)">
+          Szerkesztés
+        </button>
+        <button mat-button color="warn" (click)="deleteTicket(ticket.id!)">
+          Törlés
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
